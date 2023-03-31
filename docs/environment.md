@@ -1,3 +1,21 @@
+## FrontEnd
+
+TypeScript + React (Next.js) を使用している
+実行方法
+
+```bash
+cd frontend
+yarn install (初回のみ)
+yarn dev
+```
+
+Storybook の実行
+
+```bash
+cd frontend
+yarn storybook
+```
+
 ## Backend
 
 FastAPI を採用している

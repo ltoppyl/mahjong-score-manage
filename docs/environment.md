@@ -28,3 +28,6 @@ uvicorn main:app --reload
 ```
 
 上記を実行すると、http://127.0.0.1:8000/ にサーバが立ち上がる
+
+API のエンドポイントとしてのデプロイは [Deta Space](https://deta.space/) で行っている
+https://mahjongscorebe-1-z5531391.deta.app/

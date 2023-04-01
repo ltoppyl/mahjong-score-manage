@@ -1,10 +1,12 @@
 import { StorybookSample } from "./index";
 
-export default {
+const storybookObj = {
   component: StorybookSample,
   title: "StorybookSample",
   parameters: {},
 };
+
+export default storybookObj;
 
 const Template = () => <StorybookSample />;
 

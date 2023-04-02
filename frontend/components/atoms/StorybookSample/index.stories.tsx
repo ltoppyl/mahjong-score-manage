@@ -2,7 +2,7 @@ import { StorybookSample } from "./index";
 
 const storybookObj = {
   component: StorybookSample,
-  title: "StorybookSample",
+  title: "atoms/StorybookSample",
   parameters: {},
 };
 

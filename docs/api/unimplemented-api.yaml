@@ -1,0 +1,85 @@
+openapi: "3.0.3"
+
+info:
+  title: "未実装の API の列挙"
+  description: "この yaml は、未実装の API の列挙を行っている。実装次第 api.yaml に移動させる。"
+  version: "1.0"
+
+paths:
+  /api/v1/add-record:
+    post:
+      summary: "スコアの追加"
+      description: 成績登録時に使用する
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - userId
+                - rule
+                - score
+                - rank
+                - date
+              properties:
+                userId:
+                  type: integer
+                  description: ユーザID
+                rule:
+                  type: string
+                  description: ルール
+                score:
+                  type: integer
+                  description: 最終持ち点
+                rank:
+                  type: integer
+                  description: 着順 (1-4)
+                date:
+                  type: string
+                  description: 成績を入力した時間
+                  format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/v1/records:
+    get:
+      summary: 指定ユーザーの成績一覧を取得するAPI
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: string
+            description: 成績を取得したいユーザーのID
+          required: true
+          example: "AAAAAaaaaa11111"
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    rule:
+                      type: string
+                      description: 成績のルール名
+                      example: Mリーグルール
+                    score:
+                      type: integer
+                      description: 最終持ち点
+                      example: 25000
+                    rank:
+                      type: integer
+                      description: 着順
+                      example: 1
+                    date:
+                      type: string
+                      format: date
+                      description: 成績を取得した日付
+                      example: '2022/1/1 22:23'

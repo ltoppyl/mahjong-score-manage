@@ -28,3 +28,14 @@ db = firestore.client()
 @app.get("/")
 def root():
     return {"This is an API for managing mahjong scores!!"}
+
+
+@app.get("/api/v1/get-records")
+def get_record(userId: str):
+    db_dic = db.collection("user").document(userId).get()
+    db_dic = db_dic.to_dict()
+    record_list = dict_to_array(db_dic)
+    rank_data = aggregate_rank(record_list)
+    output = {"recordList": record_list, "rankData": rank_data}
+    return output
+

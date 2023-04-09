@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -9,6 +13,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# --------------------
+
+# Firebase の認証
+
+# --------------------
+cred = credentials.Certificate("path/to/serviceAccount.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 
 @app.get("/")

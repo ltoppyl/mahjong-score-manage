@@ -8,6 +8,7 @@ from firebase_admin import firestore
 
 from utils.create_random_id import create_random_id
 from utils.dict_to_array import dict_to_array
+from utils.aggregate_rank import aggregate_rank
 
 
 class Record(BaseModel):
@@ -70,4 +71,10 @@ async def add_record(record: Record):
     db_dic[random_id] = record_dict
     db.collection("user").document(userId).set(db_dic)
 
+    return "success"
+
+
+@app.post("/api/v1/add-user")
+async def add_user(userId: str):
+    db.collection("user").document(userId).set({})
     return "success"

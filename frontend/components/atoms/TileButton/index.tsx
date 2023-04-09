@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { Button, Icon, Text } from "@chakra-ui/react";
 type Props = {
-  type: string;
+  type: "text" | "rank" | "google-icon";
   text: string;
   isShadow: boolean;
 };

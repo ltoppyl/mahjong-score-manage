@@ -9,7 +9,9 @@
     "plugin:import/warnings",
     "eslint:recommended"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -20,7 +22,10 @@
     ],
     "sort-imports": [
       "error",
-      { "ignoreCase": true, "ignoreDeclarationSort": true }
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
     ],
     "import/order": [
       "error",
@@ -35,7 +40,11 @@
           "order": "asc",
           "caseInsensitive": true
         },
-        "pathGroupsExcludedImportTypes": ["react", "next", "next/**"],
+        "pathGroupsExcludedImportTypes": [
+          "react",
+          "next",
+          "next/**"
+        ],
         "pathGroups": [
           {
             "pattern": "@chakra-ui/*",
@@ -44,6 +53,16 @@
           },
           {
             "pattern": "@/components/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/hooks/*",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/stores/*",
             "group": "internal",
             "position": "before"
           }

@@ -6,8 +6,16 @@ type Props = {
   type: "text" | "rank" | "google-icon";
   text: string;
   isShadow: boolean;
+  isDisabled?: boolean;
+  clickFn?: () => void;
 };
-export const TileButton = ({ type, text, isShadow }: Props) => {
+export const TileButton = ({
+  type,
+  text,
+  isShadow,
+  isDisabled,
+  clickFn,
+}: Props) => {
   return (
     <>
       <style>{`
@@ -18,6 +26,7 @@ export const TileButton = ({ type, text, isShadow }: Props) => {
         color="black"
         variant="outline"
         borderBottom="6px solid #FFE400"
+        isDisabled={isDisabled}
         w={14}
         h={24}
         sx={{
@@ -31,6 +40,7 @@ export const TileButton = ({ type, text, isShadow }: Props) => {
             color: "red",
           },
         }}
+        onClick={clickFn}
       >
         {type === "text" && <Text className="tile-button">{text}</Text>}
         {type === "rank" && (

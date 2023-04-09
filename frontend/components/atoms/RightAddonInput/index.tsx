@@ -11,7 +11,7 @@ import {
 
 type Props = {
   isMinus: boolean;
-  setState: Dispatch<SetStateAction<string>>;
+  setState: Dispatch<SetStateAction<string | undefined>>;
 };
 
 export const RightAddonInput = ({ isMinus, setState }: Props) => {

@@ -15,6 +15,7 @@ export const Text: Story = {
     type: "text",
     text: "追加",
     isShadow: false,
+    isDisabled: false,
   },
 };
 

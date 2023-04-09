@@ -9,6 +9,8 @@ const storybookObj = {
 
 export default storybookObj;
 
+// TODO: any 型の使用の回避
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
   return (
     <>

@@ -47,7 +47,7 @@ export const DonutChart = ({ dataList }: Props) => {
 
   return (
     <>
-      <PieChart width={300} height={300}>
+      <PieChart width={200} height={200}>
         <Pie
           data={dataList}
           labelLine={false}

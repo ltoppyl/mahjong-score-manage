@@ -11,10 +11,6 @@ const storybookObj = {
 
 export default storybookObj;
 
-// // const Template = () => <ScoreInput />;
-
-// export const Default = Template.bind({});
-
 export const Default: StoryObj = (args: any) => {
   const [text, setText] = useState("");
   return (

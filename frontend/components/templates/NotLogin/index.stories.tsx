@@ -1,15 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 
 import { NotLogin } from "./index";
 
-const meta: Meta<typeof NotLogin> = {
+const storybookObj = {
   title: "templates/NotLogin",
   component: NotLogin,
 };
 
-export default meta;
-type Story = StoryObj<typeof NotLogin>;
+export default storybookObj;
 
-export const Default: Story = {
-  args: {},
+export const Default: StoryObj = (args: any) => {
+  return (
+    <>
+      <NotLogin {...args} />
+    </>
+  );
 };
+Default.args = {};

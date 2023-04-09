@@ -11,10 +11,8 @@ const storybookObj = {
 
 export default storybookObj;
 
-// // const Template = () => <ScoreInput />;
-
-// export const Default = Template.bind({});
-
+// TODO: any 型の使用の回避
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
   const [text, setText] = useState("");
   return (

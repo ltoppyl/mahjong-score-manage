@@ -7,8 +7,15 @@ type Props = {
   text: string;
   isShadow: boolean;
   isDisabled?: boolean;
+  clickFn?: () => void;
 };
-export const TileButton = ({ type, text, isShadow }: Props) => {
+export const TileButton = ({
+  type,
+  text,
+  isShadow,
+  isDisabled,
+  clickFn,
+}: Props) => {
   return (
     <>
       <style>{`
@@ -33,6 +40,7 @@ export const TileButton = ({ type, text, isShadow }: Props) => {
             color: "red",
           },
         }}
+        onClick={clickFn}
       >
         {type === "text" && <Text className="tile-button">{text}</Text>}
         {type === "rank" && (

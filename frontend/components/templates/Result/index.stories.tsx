@@ -19,7 +19,7 @@ export const Default: Story = {
         { name: "3", value: 30 },
         { name: "4", value: 40 },
       ],
-      resultDataList: [
+      recordList: [
         {
           rule: "Mリーグルール",
           rank: 2,

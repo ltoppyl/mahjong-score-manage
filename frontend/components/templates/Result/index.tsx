@@ -33,10 +33,10 @@ export const Result = ({ data }: Props) => {
           ))}
           <VSpacer size={16} />
         </VStack>
+        <div style={{ position: "fixed", bottom: 0 }}>
+          <Footer type="result" />
+        </div>
       </Center>
-      <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
-        <Footer type="result" />
-      </div>
     </div>
   );
 };

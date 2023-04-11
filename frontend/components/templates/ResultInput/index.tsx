@@ -25,9 +25,11 @@ export const ResultInput = ({ userName }: Props) => {
           ruleOptionList={["Mリーグルール"]}
         />
       </Center>
-      <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
-        <Footer type="home" />
-      </div>
+      <Center>
+        <div style={{ position: "fixed", bottom: 0 }}>
+          <Footer type="home" />
+        </div>
+      </Center>
     </div>
   );
 };

@@ -19,7 +19,7 @@ export const ResultCard = ({ data }: Props) => {
         textColor="black"
         borderRadius="lg"
         borderWidth={2}
-        borderColor={0 < data.point ? "black" : "red"}
+        borderColor={0 <= data.point ? "black" : "red"}
         maxW={80}
       >
         <VSpacer size={4} />

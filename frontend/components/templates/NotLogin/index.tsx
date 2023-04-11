@@ -4,7 +4,6 @@ import { Center, HStack, Text, VStack } from "@chakra-ui/react";
 
 import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
 import { TileButton } from "@/components/atoms/TileButton";
-
 import { useAuth } from "@/hooks/useAuth";
 
 export const NotLogin = () => {

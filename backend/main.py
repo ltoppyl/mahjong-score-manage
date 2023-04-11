@@ -76,5 +76,10 @@ async def add_record(record: Record):
 
 @app.post("/api/v1/add-user")
 async def add_user(userId: str):
-    db.collection("user").document(userId).set({})
+    user_ref = db.collection("user").document(userId)  # ドキュメント参照を生成
+
+    # ドキュメントが存在しない場合のみドキュメントを追加
+    if not user_ref.get().exists:
+        user_ref.set({})
+
     return "success"

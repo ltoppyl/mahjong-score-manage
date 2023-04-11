@@ -14,6 +14,7 @@ export const Footer = ({ type }: Props) => {
   return (
     <Box h={24} w="100%" bgColor="#4A6F48">
       <Center h="100%" alignItems="center">
+        <HSpacer size={14} />
         <Button
           bgColor="white"
           borderColor="black"
@@ -43,6 +44,7 @@ export const Footer = ({ type }: Props) => {
         >
           履歴画面へ
         </Button>
+        <HSpacer size={14} />
       </Center>
     </Box>
   );

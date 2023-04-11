@@ -1,3 +1,4 @@
+import { postAddUser } from "api/postAddUser";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -32,6 +33,9 @@ export const useAuth = () => {
             uid: user.uid,
           });
         }
+
+        // DB 上に uid の追加
+        postAddUser(user.uid);
       })
       .catch((error: any) => {
         const errorCode = error.code;

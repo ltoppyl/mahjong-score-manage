@@ -71,7 +71,11 @@ export const ScoreInputField = ({ isFourMahjong, ruleOptionList }: Props) => {
     <>
       <Center>
         <VStack>
-          <Select placeholder="ルールの選択" onChange={handleRuleSelect}>
+          <Select
+            bgColor="white"
+            placeholder="ルールの選択"
+            onChange={handleRuleSelect}
+          >
             {ruleOptionList.map((option, index) => {
               return (
                 <option key={index} value={option}>

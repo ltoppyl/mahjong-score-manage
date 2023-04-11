@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 import { Button, Icon, Text } from "@chakra-ui/react";
+
 type Props = {
   type: "text" | "rank" | "google-icon";
   text: string;
@@ -9,6 +10,7 @@ type Props = {
   isDisabled?: boolean;
   clickFn?: () => void;
 };
+
 export const TileButton = ({
   type,
   text,
@@ -16,11 +18,21 @@ export const TileButton = ({
   isDisabled,
   clickFn,
 }: Props) => {
+  // クライアントサイドでのみフォントを変換
+  // XXX: ChatGPT を元に生成したコードであるため完全に理解できていない
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   return (
     <>
-      <style>{`
-        @import url("https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap");
-      `}</style>
       <Button
         bg="white"
         color="black"

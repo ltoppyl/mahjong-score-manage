@@ -25,9 +25,9 @@ export const Result = ({ data }: Props) => {
           <VSpacer size={2} />
           <DonutChart dataList={data.rankData} />
           <VSpacer size={8} />
-          {data.resultDataList.map((resultData) => (
+          {data.recordList.map((record) => (
             <>
-              <ResultCard data={resultData} />
+              <ResultCard data={record} />
               <VSpacer size={1} />
             </>
           ))}

@@ -6,9 +6,10 @@ import { HStack, Icon } from "@chakra-ui/react";
 import { RightAddonInput } from "@/components/atoms/RightAddonInput";
 
 type Props = {
+  value: string | undefined;
   setState: Dispatch<SetStateAction<string | undefined>>;
 };
-export const ScoreInput = ({ setState }: Props) => {
+export const ScoreInput = ({ value, setState }: Props) => {
   const [isMinus, setIsMinus] = useState(false);
 
   const handleClick = () => {
@@ -31,7 +32,7 @@ export const ScoreInput = ({ setState }: Props) => {
           _hover={{ cursor: "pointer" }}
           onClick={handleClick}
         />
-        <RightAddonInput isMinus={isMinus} setState={setState} />
+        <RightAddonInput isMinus={isMinus} value={value} setState={setState} />
       </HStack>
     </>
   );

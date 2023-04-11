@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { RecoilRoot } from "recoil";
 
 import { ScoreInputField } from "./index";
 
@@ -8,11 +9,18 @@ const meta: Meta<typeof ScoreInputField> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ScoreInputField>;
 
-export const Default: Story = {
-  args: {
-    isFourMahjong: true,
-    ruleOptionList: ["Mリーグルール"],
-  },
+export const Default: StoryObj = (args: any) => {
+  return (
+    <>
+      <RecoilRoot>
+        <ScoreInputField {...args} />
+      </RecoilRoot>
+    </>
+  );
+};
+
+Default.args = {
+  isFourMahjong: true,
+  ruleOptionList: ["Mリーグルール"],
 };

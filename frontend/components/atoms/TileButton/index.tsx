@@ -8,6 +8,7 @@ type Props = {
   text: string;
   isShadow: boolean;
   isDisabled?: boolean;
+  isLoading?: boolean;
   clickFn?: () => void;
 };
 
@@ -16,6 +17,7 @@ export const TileButton = ({
   text,
   isShadow,
   isDisabled,
+  isLoading,
   clickFn,
 }: Props) => {
   // クライアントサイドでのみフォントを変換
@@ -39,6 +41,7 @@ export const TileButton = ({
         variant="outline"
         borderBottom="6px solid #FFE400"
         isDisabled={isDisabled}
+        isLoading={isLoading}
         w={14}
         h={24}
         sx={{

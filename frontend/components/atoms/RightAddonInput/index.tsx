@@ -11,14 +11,15 @@ import {
 
 type Props = {
   isMinus: boolean;
+  value: string | undefined;
   setState: Dispatch<SetStateAction<string | undefined>>;
 };
 
-export const RightAddonInput = ({ isMinus, setState }: Props) => {
+export const RightAddonInput = ({ isMinus, value, setState }: Props) => {
   return (
     <>
       <InputGroup size="md" maxW={48} textColor={isMinus ? "red" : "black"}>
-        <NumberInput>
+        <NumberInput value={value || ""}>
           <HStack spacing={0}>
             <NumberInputField
               bgColor="white"

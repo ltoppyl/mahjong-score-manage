@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { RecoilRoot } from "recoil";
 
 import { ResultInput } from "./index";
 
@@ -8,10 +9,17 @@ const meta: Meta<typeof ResultInput> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ResultInput>;
 
-export const Default: Story = {
-  args: {
-    userName: "適当なユーザー名",
-  },
+export const Default: StoryObj = (args: any) => {
+  return (
+    <>
+      <RecoilRoot>
+        <ResultInput {...args} />
+      </RecoilRoot>
+    </>
+  );
+};
+
+Default.args = {
+  userName: "適当なユーザー名",
 };

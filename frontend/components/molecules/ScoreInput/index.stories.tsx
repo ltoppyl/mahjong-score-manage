@@ -14,10 +14,10 @@ export default storybookObj;
 // TODO: any 型の使用の回避
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(undefined);
   return (
     <>
-      <ScoreInput {...args} setState={setText} />
+      <ScoreInput {...args} value={text} setState={setText} />
 
       <p>--------------------</p>
       <p>入力された数字: {text}</p>

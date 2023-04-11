@@ -11,10 +11,10 @@ const meta: Meta<typeof RightAddonInput> = {
 export default meta;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(undefined);
   return (
     <>
-      <RightAddonInput {...args} setState={setText} />
+      <RightAddonInput {...args} value={text} setState={setText} />
 
       <p>--------------------</p>
       <p>入力された数字: {text}</p>

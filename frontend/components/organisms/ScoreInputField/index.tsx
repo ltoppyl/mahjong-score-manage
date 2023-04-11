@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { fetchTime } from "utils/fetchTime";
 
 import { Box, Center, HStack, Select, VStack } from "@chakra-ui/react";
 
@@ -10,6 +9,7 @@ import { TileButton } from "@/components/atoms/TileButton";
 import { ScoreInput } from "@/components/molecules/ScoreInput";
 import { loginState } from "@/stores/Recoil";
 import { PostRecord } from "@/types/PostRecord";
+import { fetchTime } from "@/utils/fetchTime";
 
 type Input = {
   rule: string | undefined;

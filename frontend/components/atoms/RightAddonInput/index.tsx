@@ -21,6 +21,7 @@ export const RightAddonInput = ({ isMinus, setState }: Props) => {
         <NumberInput>
           <HStack spacing={0}>
             <NumberInputField
+              bgColor="white"
               textAlign="center"
               placeholder="250"
               onChange={(e) => {

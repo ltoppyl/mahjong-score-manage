@@ -11,7 +11,7 @@ type Props = {
   score: number;
   point: number;
   date: string;
-  isFourMahjong: boolean;
+  gameType: number;
 };
 export const ResultCard = ({
   rule,
@@ -19,7 +19,7 @@ export const ResultCard = ({
   score,
   point,
   date,
-  isFourMahjong,
+  gameType,
 }: Props) => {
   const pointText = 0 < point ? `+${point}` : `${point}`;
 
@@ -42,7 +42,7 @@ export const ResultCard = ({
             justifyContent="center"
           >
             <Icon
-              as={isFourMahjong ? Bs4CircleFill : Bs3CircleFill}
+              as={gameType === 4 ? Bs4CircleFill : Bs3CircleFill}
               boxSize={6}
             />
           </Box>

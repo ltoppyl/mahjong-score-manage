@@ -17,7 +17,7 @@ type Props = {
       score: number;
       point: number;
       date: string;
-      isFourMahjong: boolean;
+      gameType: number;
     }[];
   };
 };
@@ -42,7 +42,7 @@ export const Result = ({ data }: Props) => {
                 score={resultData.score}
                 point={resultData.point}
                 date={resultData.date}
-                isFourMahjong={resultData.isFourMahjong}
+                gameType={resultData.gameType}
               />
               <VSpacer size={1} />
             </>

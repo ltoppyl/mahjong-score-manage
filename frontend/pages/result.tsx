@@ -17,7 +17,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 12:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -25,7 +25,7 @@ const ResultPage: NextPage = () => {
         score: 13000,
         point: -10.3,
         date: "2023/4/1 13:00",
-        isFourMahjong: false,
+        gameType: 3,
       },
       {
         rule: "Mリーグルール",
@@ -33,7 +33,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 14:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -41,7 +41,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -49,7 +49,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -57,7 +57,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -65,7 +65,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -73,7 +73,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -81,7 +81,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -89,7 +89,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -97,7 +97,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
       {
         rule: "Mリーグルール",
@@ -105,7 +105,7 @@ const ResultPage: NextPage = () => {
         score: 25000,
         point: 4.3,
         date: "2023/4/1 15:00",
-        isFourMahjong: true,
+        gameType: 4,
       },
     ],
   };

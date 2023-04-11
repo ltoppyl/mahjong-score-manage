@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Center, HStack, VStack } from "@chakra-ui/react";
+import { Box, Center, HStack, VStack } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { DonutChart } from "@/components/atoms/PieChart";
 import { ResultCard } from "@/components/atoms/ResultCard";
 import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
+import { Footer } from "@/components/organisms/Footer";
 
 type Props = {
   data: {
@@ -22,7 +23,7 @@ type Props = {
 };
 export const Result = ({ data }: Props) => {
   return (
-    <>
+    <div style={{ position: "relative", minHeight: "100vh" }}>
       <Center>
         <VStack>
           <VSpacer size={12} />
@@ -46,8 +47,12 @@ export const Result = ({ data }: Props) => {
               <VSpacer size={1} />
             </>
           ))}
+          <VSpacer size={16} />
         </VStack>
       </Center>
-    </>
+      <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
+        <Footer type="result" />
+      </div>
+    </div>
   );
 };

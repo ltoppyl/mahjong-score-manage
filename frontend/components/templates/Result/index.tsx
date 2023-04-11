@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Center, HStack, VStack } from "@chakra-ui/react";
+import { Center, HStack, VStack } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { DonutChart } from "@/components/atoms/PieChart";

@@ -1,12 +1,8 @@
 import type { NextPage } from "next";
-import { useRecoilValue } from "recoil";
 
 import { Result } from "@/components/templates/Result";
 
-import { loginState } from "@/stores/Recoil";
-
 const ResultPage: NextPage = () => {
-  const login = useRecoilValue(loginState);
   const data = {
     rankData: [
       { name: "1", value: 10 },

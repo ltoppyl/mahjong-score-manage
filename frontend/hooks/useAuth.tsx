@@ -15,10 +15,12 @@ export const useAuth = () => {
   const auth = getAuth(app);
   const setLogin = useSetRecoilState(loginState);
 
+  console.log(app);
   const login = () => {
     signInWithPopup(auth, provider)
       .then((result: any) => {
         const user = result.user;
+        console.log(user);
         if (user.displayName) {
           setLogin({
             isLogin: true,
@@ -34,6 +36,7 @@ export const useAuth = () => {
         }
       })
       .catch((error: any) => {
+        console.log("エラーを吐いていることをちゃんと確認する");
         const errorCode = error.code;
         const errorMessage = error.message;
         // eslint-disable-next-line no-console

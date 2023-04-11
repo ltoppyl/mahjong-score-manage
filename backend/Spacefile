@@ -9,3 +9,7 @@ micros:
       - "/*"
     presets:
       api_keys: true
+      env:
+        - name: APP_ENV
+          description: Environment variables to separate the DB in the production and development environments
+          default: "production"

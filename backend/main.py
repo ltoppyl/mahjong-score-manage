@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
@@ -36,7 +38,12 @@ app.add_middleware(
 # Firebase の認証
 
 # --------------------
-cred = credentials.Certificate("path/to/serviceAccount.json")
+load_dotenv()
+if os.getenv("APP_ENV") == "dev":
+    path = "path/to/dev.json"
+else:
+    path = "path/to/production.json"
+cred = credentials.Certificate(path)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 

@@ -6,8 +6,9 @@ import {
 } from "firebase/auth";
 import { useSetRecoilState } from "recoil";
 
+import { loginState } from "@/stores/Recoil";
+
 import { app } from "../firebase";
-import { loginState } from "../stores/Recoil";
 
 export const useAuth = () => {
   const provider = new GoogleAuthProvider();
@@ -15,11 +16,9 @@ export const useAuth = () => {
   const setLogin = useSetRecoilState(loginState);
 
   const login = () => {
-    console.log(provider, auth);
     signInWithPopup(auth, provider)
       .then((result: any) => {
         const user = result.user;
-        console.log(user);
         if (user.displayName) {
           setLogin({
             isLogin: true,

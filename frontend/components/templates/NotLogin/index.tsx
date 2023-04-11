@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Center, HStack, Text, VStack } from "@chakra-ui/react";
 
@@ -8,8 +8,10 @@ import { useAuth } from "@/hooks/useAuth";
 
 export const NotLogin = () => {
   const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
+    setIsLoading(true);
     login();
   };
 
@@ -28,6 +30,7 @@ export const NotLogin = () => {
             type="google-icon"
             text=""
             isShadow={false}
+            isLoading={isLoading}
             clickFn={handleClick}
           />
         </VStack>

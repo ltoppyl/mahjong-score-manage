@@ -6,6 +6,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+from utils.cal_point import cal_point
 from utils.create_random_id import create_random_id
 from utils.dict_to_array import dict_to_array
 from utils.aggregate_rank import aggregate_rank
@@ -59,6 +60,8 @@ def get_record(userId: str):
 async def add_record(record: Record):
     record_dict = record.dict()
     userId = record_dict.pop("userId")
+    record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
+
     db_dic = db.collection("user").document(userId).get()
     db_dic = db_dic.to_dict()
 

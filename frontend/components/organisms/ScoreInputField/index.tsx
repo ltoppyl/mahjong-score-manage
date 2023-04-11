@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import { Box, Center, HStack, Select, VStack } from "@chakra-ui/react";
 
+import { postRecord } from "@/api/postRecord";
 import { VSpacer } from "@/components/atoms/Spacer";
 import { TileButton } from "@/components/atoms/TileButton";
 import { ScoreInput } from "@/components/molecules/ScoreInput";
+import { loginState } from "@/stores/Recoil";
+import { PostRecord } from "@/types/PostRecord";
+import { fetchTime } from "@/utils/fetchTime";
 
 type Input = {
   rule: string | undefined;
@@ -17,6 +22,7 @@ type Props = {
   ruleOptionList: string[];
 };
 export const ScoreInputField = ({ isFourMahjong, ruleOptionList }: Props) => {
+  const login = useRecoilValue(loginState);
   const rankSelectList = isFourMahjong
     ? ["一着", "二着", "三着", "四着"]
     : ["一着", "二着", "三着"];
@@ -64,7 +70,20 @@ export const ScoreInputField = ({ isFourMahjong, ruleOptionList }: Props) => {
   };
 
   const handleClickAddData = () => {
-    // データを送信する処理を追加
+    // このような場合は isValidate で弾いてるが、以下で型を正しく推論できるように追加している
+    if (!(input.rule && input.rank && input.score)) {
+      return;
+    }
+
+    const data: PostRecord = {
+      userId: login.uid,
+      date: fetchTime(),
+      gameType: 4, // TODO: 後に3麻も増えた場合それに対応する必要がある
+      rank: input.rank,
+      rule: input.rule,
+      score: input.score,
+    };
+    postRecord(data);
   };
 
   return (

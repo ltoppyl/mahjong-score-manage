@@ -52,17 +52,7 @@
             "position": "after"
           },
           {
-            "pattern": "@/components/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "@/hooks/*",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "@/stores/*",
+            "pattern": "@/**",
             "group": "internal",
             "position": "before"
           }

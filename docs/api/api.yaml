@@ -66,14 +66,17 @@ paths:
                         - gameType
                         - rank
                   rankData:
-                    type: object
-                    additionalProperties:
-                      type: integer
-                    example:
-                      "1": 2
-                      "2": 10
-                      "3": 1
-                      "4": 1
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: integer
+                      required:
+                        - name
+                        - value
 
   /api/v1/add-record:
     post:

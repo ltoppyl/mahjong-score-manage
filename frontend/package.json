@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir api --dir components --dir hooks --dir pages --dir styles --dir stores",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -14,6 +14,7 @@
     "@chakra-ui/react": "^2.5.3",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "axios": "^1.3.5",
     "firebase": "^9.19.1",
     "framer-motion": "^10.9.1",
     "next": "13.2.4",

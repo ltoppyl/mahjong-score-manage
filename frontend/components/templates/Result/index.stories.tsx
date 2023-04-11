@@ -19,14 +19,14 @@ export const Default: Story = {
         { name: "3", value: 30 },
         { name: "4", value: 40 },
       ],
-      resultDataList: [
+      recordList: [
         {
           rule: "Mリーグルール",
           rank: 2,
           score: 25000,
           point: 4.3,
           date: "2023/4/1 12:00",
-          isFourMahjong: true,
+          gameType: 4,
         },
         {
           rule: "Mリーグルール",
@@ -34,7 +34,7 @@ export const Default: Story = {
           score: 13000,
           point: -10.3,
           date: "2023/4/1 13:00",
-          isFourMahjong: false,
+          gameType: 3,
         },
         {
           rule: "Mリーグルール",
@@ -42,7 +42,7 @@ export const Default: Story = {
           score: 25000,
           point: 4.3,
           date: "2023/4/1 14:00",
-          isFourMahjong: true,
+          gameType: 4,
         },
         {
           rule: "Mリーグルール",
@@ -50,7 +50,7 @@ export const Default: Story = {
           score: 25000,
           point: 4.3,
           date: "2023/4/1 15:00",
-          isFourMahjong: true,
+          gameType: 4,
         },
       ],
     },

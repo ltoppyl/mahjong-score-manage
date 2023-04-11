@@ -6,6 +6,7 @@ import {
 } from "firebase/auth";
 import { useSetRecoilState } from "recoil";
 
+import { postAddUser } from "@/api/postAddUser";
 import { loginState } from "@/stores/Recoil";
 
 import { app } from "../firebase";
@@ -17,6 +18,8 @@ export const useAuth = () => {
 
   const login = () => {
     signInWithPopup(auth, provider)
+      // FIXME: any 型を回避する
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((result: any) => {
         const user = result.user;
         if (user.displayName) {
@@ -32,7 +35,12 @@ export const useAuth = () => {
             uid: user.uid,
           });
         }
+
+        // DB 上に uid の追加
+        postAddUser(user.uid);
       })
+      // FIXME: any 型を回避する
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => {
         const errorCode = error.code;
         const errorMessage = error.message;

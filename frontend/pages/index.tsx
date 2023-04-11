@@ -3,7 +3,6 @@ import { useRecoilValue } from "recoil";
 
 import { NotLogin } from "@/components/templates/NotLogin";
 import { ResultInput } from "@/components/templates/ResultInput";
-
 import { loginState } from "@/stores/Recoil";
 
 const Home: NextPage = () => {

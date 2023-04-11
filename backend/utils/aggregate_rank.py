@@ -1,8 +1,12 @@
 def aggregate_rank(data_list):
-    dic = {}
+    arr = [
+        {"name": "1", "value": 0},
+        {"name": "2", "value": 0},
+        {"name": "3", "value": 0},
+        {"name": "4", "value": 0},
+    ]
+
     for data in data_list:
-        if data["rank"] not in dic:
-            dic[data["rank"]] = 1
-        else:
-            dic[data["rank"]] += 1
-    return dic
+        arr[data["rank"] - 1]["value"] += 1
+
+    return arr

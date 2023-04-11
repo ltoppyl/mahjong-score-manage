@@ -3,25 +3,14 @@ import { Bs3CircleFill, Bs4CircleFill } from "react-icons/bs";
 
 import { Box, HStack, Icon, Text } from "@chakra-ui/react";
 
-import { VSpacer } from "../Spacer/index";
+import { VSpacer } from "@/components/atoms/Spacer";
+import { Record } from "@/types/Record";
 
 type Props = {
-  rule: string;
-  rank: number;
-  score: number;
-  point: number;
-  date: string;
-  isFourMahjong: boolean;
+  data: Record;
 };
-export const ResultCard = ({
-  rule,
-  rank,
-  score,
-  point,
-  date,
-  isFourMahjong,
-}: Props) => {
-  const pointText = 0 < point ? `+${point}` : `${point}`;
+export const ResultCard = ({ data }: Props) => {
+  const pointText = 0 < data.point ? `+${data.point}` : `${data.point}`;
 
   return (
     <>
@@ -30,7 +19,7 @@ export const ResultCard = ({
         textColor="black"
         borderRadius="lg"
         borderWidth={2}
-        borderColor={0 < point ? "black" : "red"}
+        borderColor={0 < data.point ? "black" : "red"}
         maxW={80}
       >
         <VSpacer size={4} />
@@ -42,24 +31,24 @@ export const ResultCard = ({
             justifyContent="center"
           >
             <Icon
-              as={isFourMahjong ? Bs4CircleFill : Bs3CircleFill}
+              as={data.gameType === 4 ? Bs4CircleFill : Bs3CircleFill}
               boxSize={6}
             />
           </Box>
 
           <Box w="40%" textAlign="center">
-            <Text>{rank}着</Text>
+            <Text>{data.rank}着</Text>
             <VSpacer size={2} />
             <Text noOfLines={1} overflow="hidden">
-              {rule}
+              {data.rule}
             </Text>
           </Box>
           <Box w="50%" textAlign="center">
-            <Text>{date}</Text>
+            <Text>{data.date}</Text>
             <VSpacer size={2} />
             <HStack w="100%" justifyContent="space-between">
               <Box flexGrow={1}> </Box>
-              <Text>{score}点</Text>
+              <Text>{data.score}点</Text>
               <Text>{pointText}P</Text>
               <Box flexGrow={1}> </Box>
             </HStack>

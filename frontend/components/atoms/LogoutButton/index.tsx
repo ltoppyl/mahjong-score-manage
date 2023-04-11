@@ -4,7 +4,6 @@ import { FiLogOut } from "react-icons/fi";
 import { Icon, useDisclosure } from "@chakra-ui/react";
 
 import { CustomModal } from "@/components/atoms/CustomModal";
-
 import { useAuth } from "@/hooks/useAuth";
 
 export const LogoutButton = () => {

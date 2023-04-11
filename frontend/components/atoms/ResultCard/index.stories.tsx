@@ -12,11 +12,13 @@ type Story = StoryObj<typeof ResultCard>;
 
 export const Default: Story = {
   args: {
-    rule: "Mリーグルール",
-    rank: 2,
-    score: 25000,
-    point: 4.3,
-    date: "2023/4/1 12:12",
-    isFourMahjong: true,
+    data: {
+      rule: "Mリーグルール",
+      rank: 2,
+      score: 25000,
+      point: 4.3,
+      date: "2023/4/1 12:12",
+      gameType: 4,
+    },
   },
 };

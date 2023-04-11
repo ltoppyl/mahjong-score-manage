@@ -7,19 +7,10 @@ import { DonutChart } from "@/components/atoms/PieChart";
 import { ResultCard } from "@/components/atoms/ResultCard";
 import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
 import { Footer } from "@/components/organisms/Footer";
+import { FetchRecord } from "@/types/FetchRecord";
 
 type Props = {
-  data: {
-    rankData: { name: string; value: number }[];
-    resultDataList: {
-      rule: string;
-      rank: number;
-      score: number;
-      point: number;
-      date: string;
-      gameType: number;
-    }[];
-  };
+  data: FetchRecord;
 };
 export const Result = ({ data }: Props) => {
   return (
@@ -36,14 +27,7 @@ export const Result = ({ data }: Props) => {
           <VSpacer size={8} />
           {data.resultDataList.map((resultData) => (
             <>
-              <ResultCard
-                rule={resultData.rule}
-                rank={resultData.rank}
-                score={resultData.score}
-                point={resultData.point}
-                date={resultData.date}
-                gameType={resultData.gameType}
-              />
+              <ResultCard data={resultData} />
               <VSpacer size={1} />
             </>
           ))}

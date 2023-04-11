@@ -12,7 +12,7 @@ export const Footer = ({ type }: Props) => {
   const router = useRouter();
 
   return (
-    <Box h={24} w="100%">
+    <Box h={24} w="100%" bgColor="#4A6F48">
       <Center h="100%" alignItems="center">
         <Button
           bgColor="white"

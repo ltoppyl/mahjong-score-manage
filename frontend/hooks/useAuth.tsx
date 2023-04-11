@@ -12,6 +12,7 @@ import { app } from "../firebase";
 
 export const useAuth = () => {
   const provider = new GoogleAuthProvider();
+  console.log(app);
   const auth = getAuth(app);
   const setLogin = useSetRecoilState(loginState);
 

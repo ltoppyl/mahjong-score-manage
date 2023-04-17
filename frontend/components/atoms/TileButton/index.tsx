@@ -42,13 +42,13 @@ export const TileButton = ({
         borderBottom="6px solid #FFE400"
         isDisabled={isDisabled}
         isLoading={isLoading}
-        w={14}
-        h={24}
+        w={"51px"}
+        h={"68px"}
         sx={{
           boxShadow: isShadow ? "inset 0px 0px 10px rgba(0, 0, 0, 0.7)" : "",
           ".tile-button": {
             fontFamily: "Zhi Mang Xing, cursive",
-            fontSize: 32,
+            fontSize: 31,
             writingMode: "vertical-rl",
           },
           ".tile-rank": {

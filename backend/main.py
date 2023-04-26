@@ -55,9 +55,13 @@ def root():
 
 @app.get("/api/v1/get-records")
 def get_record(userId: str):
-    db_dic = db.collection("user").document(userId).get()
-    db_dic = db_dic.to_dict()
-    record_list = dict_to_array(db_dic)
+    record_list=[]
+    docs = db.collection("user").document(userId).collection("result").stream()
+    for doc in docs:
+        record_dic = doc.to_dict()
+        record_dic["id"] = doc.id
+        record_list.append(record_dic) 
+
     rank_data = aggregate_rank(record_list)
     output = {"recordList": record_list, "rankData": rank_data}
     return output
@@ -69,17 +73,7 @@ async def add_record(record: Record):
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
 
-    db_dic = db.collection("user").document(userId).get()
-    db_dic = db_dic.to_dict()
-
-    isIdExist = True
-    while isIdExist:
-        random_id = create_random_id()
-        if random_id not in db_dic:
-            isIdExist = False
-
-    db_dic[random_id] = record_dict
-    db.collection("user").document(userId).set(db_dic)
+    db.collection("user").document(userId).collection("result").document().set(record_dict)
 
     return "success"
 

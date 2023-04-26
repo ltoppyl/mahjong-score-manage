@@ -25,12 +25,16 @@ export const Result = ({ data }: Props) => {
           <VSpacer size={2} />
           <DonutChart dataList={data.rankData} />
           <VSpacer size={8} />
-          {data.recordList.map((record) => (
-            <>
-              <ResultCard data={record} />
-              <VSpacer size={1} />
-            </>
-          ))}
+          {data.recordList.length === 0 ? (
+            <p>成績データがありません</p>
+          ) : (
+            data.recordList.map((record) => (
+              <>
+                <ResultCard data={record} />
+                <VSpacer size={1} />
+              </>
+            ))
+          )}
           <VSpacer size={16} />
         </VStack>
         <div style={{ position: "fixed", bottom: 0 }}>

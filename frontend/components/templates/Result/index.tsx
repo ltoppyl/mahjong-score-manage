@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Center, HStack, VStack } from "@chakra-ui/react";
+import { Center, HStack, VStack, Text } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { DonutChart } from "@/components/atoms/PieChart";
@@ -26,7 +26,7 @@ export const Result = ({ data }: Props) => {
           <DonutChart dataList={data.rankData} />
           <VSpacer size={8} />
           {data.recordList.length === 0 ? (
-            <p>成績データがありません</p>
+            <Text>成績データがありません</Text>
           ) : (
             data.recordList.map((record) => (
               <>

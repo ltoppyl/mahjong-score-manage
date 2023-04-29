@@ -15,9 +15,16 @@ export default storybookObj;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
   const [text, setText] = useState(undefined);
+  const [flag, setFlag] = useState(false);
   return (
     <>
-      <ScoreInput {...args} value={text} setState={setText} />
+      <ScoreInput
+        {...args}
+        isScoreMinus={flag}
+        setIsScoreMinus={setFlag}
+        value={text}
+        setState={setText}
+      />
 
       <p>--------------------</p>
       <p>入力された数字: {text}</p>

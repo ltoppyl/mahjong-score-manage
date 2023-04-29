@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 
 import { HStack, Icon } from "@chakra-ui/react";
@@ -6,20 +6,19 @@ import { HStack, Icon } from "@chakra-ui/react";
 import { RightAddonInput } from "@/components/atoms/RightAddonInput";
 
 type Props = {
+  isScoreMinus: boolean;
+  setIsScoreMinus: Dispatch<SetStateAction<boolean>>;
   value: string | undefined;
   setState: Dispatch<SetStateAction<string | undefined>>;
 };
-export const ScoreInput = ({ value, setState }: Props) => {
-  const [isMinus, setIsMinus] = useState(false);
-
+export const ScoreInput = ({
+  isScoreMinus,
+  setIsScoreMinus,
+  value,
+  setState,
+}: Props) => {
   const handleClick = () => {
-    setIsMinus(!isMinus);
-    setState((prev) => {
-      if (!prev) return prev;
-
-      const parsed = parseInt(prev, 10);
-      return isNaN(parsed) ? prev : String(parsed * -1);
-    });
+    setIsScoreMinus(!isScoreMinus);
   };
 
   return (
@@ -27,12 +26,16 @@ export const ScoreInput = ({ value, setState }: Props) => {
       <HStack>
         <Icon
           boxSize={12}
-          as={isMinus ? AiOutlineMinusSquare : AiOutlinePlusSquare}
-          color={isMinus ? "red" : "black"}
+          as={isScoreMinus ? AiOutlineMinusSquare : AiOutlinePlusSquare}
+          color={isScoreMinus ? "red" : "black"}
           _hover={{ cursor: "pointer" }}
           onClick={handleClick}
         />
-        <RightAddonInput isMinus={isMinus} value={value} setState={setState} />
+        <RightAddonInput
+          isMinus={isScoreMinus}
+          value={value}
+          setState={setState}
+        />
       </HStack>
     </>
   );

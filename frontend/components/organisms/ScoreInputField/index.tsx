@@ -42,6 +42,7 @@ export const ScoreInputField = ({
   };
   const [input, setInput] = useState<Input>(initialInput);
   const [inputScore, setInputScore] = useState<string | undefined>(undefined);
+  const [isScoreMinus, setIsScoreMinus] = useState<boolean>(false); // スコアがマイナスかどうかの状態
   const [isValidate, setIsValidate] = useState<boolean>(false); // データを送信可能かどうかの状態
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [resStatus, setResStatus] = useState<number>(0);
@@ -132,7 +133,7 @@ export const ScoreInputField = ({
       gameType: 4, // TODO: 後に3麻も増えた場合それに対応する必要がある
       rank: input.rank,
       rule: input.rule,
-      score: input.score,
+      score: input.score * (isScoreMinus ? -1 : 1),
     };
     postRecord(data, setResStatus);
   };
@@ -175,7 +176,12 @@ export const ScoreInputField = ({
             })}
           </HStack>
           <VSpacer size={8} />
-          <ScoreInput value={inputScore} setState={setInputScore} />
+          <ScoreInput
+            isScoreMinus={isScoreMinus}
+            setIsScoreMinus={setIsScoreMinus}
+            value={inputScore}
+            setState={setInputScore}
+          />
           <VSpacer size={8} />
           <TileButton
             type="text"

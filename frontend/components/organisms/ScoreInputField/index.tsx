@@ -45,7 +45,6 @@ export const ScoreInputField = ({
   const [isScoreMinus, setIsScoreMinus] = useState<boolean>(false); // スコアがマイナスかどうかの状態
   const [isValidate, setIsValidate] = useState<boolean>(false); // データを送信可能かどうかの状態
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [resStatus, setResStatus] = useState<number>(0);
   const toast = useToast();
 
   useEffect(() => {
@@ -63,42 +62,6 @@ export const ScoreInputField = ({
       return input.rule && input.rank && input.score ? true : false;
     });
   }, [input]);
-
-  useEffect(() => {
-    // 初期値
-    if (resStatus === 0) {
-      return;
-    }
-
-    if (resStatus !== 200) {
-      toast({
-        title: "データの送信に失敗しました",
-        status: "error",
-        position: "top",
-        duration: 3000,
-        isClosable: false,
-      });
-
-      setIsLoading(false);
-      return;
-    }
-
-    toast({
-      title: "データの送信に成功しました！",
-      status: "success",
-      position: "top",
-      duration: 3000,
-      isClosable: false,
-    });
-
-    // フォームの初期化
-    setIsLoading(false);
-    setIsValidate(false);
-    setInputScore(undefined);
-    setInput(initialInput);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resStatus]);
 
   const handleRuleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -119,7 +82,7 @@ export const ScoreInputField = ({
     });
   };
 
-  const handleClickAddData = () => {
+  const handleClickAddData = async () => {
     setIsLoading(true);
 
     // このような場合は isValidate で弾いてるが、以下で型を正しく推論できるように追加している
@@ -135,7 +98,36 @@ export const ScoreInputField = ({
       rule: input.rule,
       score: input.score * (isScoreMinus ? -1 : 1),
     };
-    postRecord(data, setResStatus);
+    const res = await postRecord(data);
+
+    // データの送信に失敗した場合の処理
+    if (!res || res.status !== 200) {
+      toast({
+        title: "データの送信に失敗しました",
+        status: "error",
+        position: "top",
+        duration: 3000,
+        isClosable: false,
+      });
+
+      setIsLoading(false);
+      return;
+    }
+
+    // データの送信に成功した場合の処理
+    toast({
+      title: "データの送信に成功しました！",
+      status: "success",
+      position: "top",
+      duration: 3000,
+      isClosable: false,
+    });
+
+    // フォームの初期化
+    setIsLoading(false);
+    setIsValidate(false);
+    setInputScore(undefined);
+    setInput(initialInput);
   };
 
   return (

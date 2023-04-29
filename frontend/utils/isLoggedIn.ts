@@ -12,6 +12,10 @@ export const IsLoggedIn = (): UserInfo | null => {
     return null;
   }
 
-  // TODO: data を parse する前に型チェックを行い UserInfo 型であることを確認する
-  return JSON.parse(data);
+  const parsed = JSON.parse(data);
+  if (!parsed.name || !parsed.uid) {
+    return null;
+  }
+
+  return parsed;
 };

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { RecoilRoot } from "recoil";
 
 import { ResultInput } from "./index";
 
@@ -10,16 +9,19 @@ const meta: Meta<typeof ResultInput> = {
 
 export default meta;
 
+// FIXME: any 型の回避
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
   return (
     <>
-      <RecoilRoot>
-        <ResultInput {...args} />
-      </RecoilRoot>
+      <ResultInput {...args} />
     </>
   );
 };
 
 Default.args = {
-  userName: "適当なユーザー名",
+  userInfo: {
+    name: "適当なユーザー名",
+    uid: "#####",
+  },
 };

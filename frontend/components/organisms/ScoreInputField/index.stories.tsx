@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { RecoilRoot } from "recoil";
 
 import { ScoreInputField } from "./index";
 
@@ -15,9 +14,7 @@ export default meta;
 export const Default: StoryObj = (args: any) => {
   return (
     <>
-      <RecoilRoot>
-        <ScoreInputField {...args} />
-      </RecoilRoot>
+      <ScoreInputField {...args} />
     </>
   );
 };

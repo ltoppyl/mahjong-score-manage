@@ -14,7 +14,6 @@ import { postRecord } from "@/api/postRecord";
 import { VSpacer } from "@/components/atoms/Spacer";
 import { TileButton } from "@/components/atoms/TileButton";
 import { ScoreInput } from "@/components/molecules/ScoreInput";
-import { loginState } from "@/stores/Recoil";
 import { PostRecord } from "@/types/PostRecord";
 import { fetchTime } from "@/utils/fetchTime";
 
@@ -27,9 +26,13 @@ type Input = {
 type Props = {
   isFourMahjong: boolean;
   ruleOptionList: string[];
+  userId: string;
 };
-export const ScoreInputField = ({ isFourMahjong, ruleOptionList }: Props) => {
-  const login = useRecoilValue(loginState);
+export const ScoreInputField = ({
+  isFourMahjong,
+  ruleOptionList,
+  userId,
+}: Props) => {
   const rankSelectList = isFourMahjong
     ? ["一着", "二着", "三着", "四着"]
     : ["一着", "二着", "三着"];
@@ -125,7 +128,7 @@ export const ScoreInputField = ({ isFourMahjong, ruleOptionList }: Props) => {
     }
 
     const data: PostRecord = {
-      userId: login.uid,
+      userId: userId,
       date: fetchTime(),
       gameType: 4, // TODO: 後に3麻も増えた場合それに対応する必要がある
       rank: input.rank,

@@ -9,8 +9,6 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 from utils.cal_point import cal_point
-from utils.create_random_id import create_random_id
-from utils.dict_to_array import dict_to_array
 from utils.aggregate_rank import aggregate_rank
 
 
@@ -55,12 +53,12 @@ def root():
 
 @app.get("/api/v1/get-records")
 def get_record(userId: str):
-    record_list=[]
+    record_list = []
     docs = db.collection("user").document(userId).collection("result").stream()
     for doc in docs:
         record_dic = doc.to_dict()
         record_dic["id"] = doc.id
-        record_list.append(record_dic) 
+        record_list.append(record_dic)
 
     rank_data = aggregate_rank(record_list)
     output = {"recordList": record_list, "rankData": rank_data}

@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
@@ -36,11 +34,7 @@ app.add_middleware(
 # Firebase の認証
 
 # --------------------
-load_dotenv()
-if os.getenv("APP_ENV") == "dev":
-    path = "path/to/dev.json"
-else:
-    path = "path/to/production.json"
+path = "path/to/dev.json"
 cred = credentials.Certificate(path)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -71,7 +65,9 @@ async def add_record(record: Record):
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
 
-    db.collection("user").document(userId).collection("result").document().set(record_dict)
+    db.collection("user").document(userId).collection("result").document().set(
+        record_dict
+    )
 
     return "success"
 

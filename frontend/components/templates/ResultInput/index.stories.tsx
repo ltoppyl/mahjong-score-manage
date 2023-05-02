@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 
 import { ResultInput } from "./index";
 
@@ -12,9 +13,10 @@ export default meta;
 // FIXME: any 型の回避
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
+  const [flag, setFlag] = useState<boolean>(false);
   return (
     <>
-      <ResultInput {...args} />
+      <ResultInput {...args} flag={flag} setState={setFlag} />
     </>
   );
 };

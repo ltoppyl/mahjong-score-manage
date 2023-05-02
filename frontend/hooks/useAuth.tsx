@@ -38,10 +38,17 @@ export const useAuth = () => {
     }
   };
 
-  const logout = () => {
-    signOut(auth);
+  const logout = async () => {
+    try {
+      signOut(auth);
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
 
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
+      return true;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+      return false;
+    }
   };
 
   return { login, logout };

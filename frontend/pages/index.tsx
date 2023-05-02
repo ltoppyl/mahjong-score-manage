@@ -17,7 +17,11 @@ const Home: NextPage = () => {
   return (
     <>
       {loginInfo ? (
-        <ResultInput userInfo={loginInfo} />
+        <ResultInput
+          flag={loginFlag}
+          setState={setLoginFlag}
+          userInfo={loginInfo}
+        />
       ) : (
         <NotLogin flag={loginFlag} setState={setLoginFlag} />
       )}

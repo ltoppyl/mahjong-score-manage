@@ -21,7 +21,7 @@ type Props = {
   bgColor?: string;
   variant?: string;
   borderColor?: string;
-  clickFn: () => void;
+  clickFn: (() => void) | (() => Promise<void>) | undefined;
 };
 export const CustomModal = ({
   isOpen,

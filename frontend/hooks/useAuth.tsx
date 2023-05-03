@@ -16,8 +16,8 @@ export const useAuth = () => {
 
   const login = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+      const res = await signInWithPopup(auth, provider);
+      const user = res.user;
       const data = {
         name: user.displayName ? user.displayName : "",
         uid: user.uid,

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
@@ -64,6 +65,9 @@ async def add_record(record: Record):
     record_dict = record.dict()
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
+
+    if record_dict["gameType"] != 4 and record_dict["gameType"] != 3:
+        return JSONResponse(status_code=422, content={"message": "Invalid gameType"})
 
     if record_dict["gameType"] == 4:
         doc_ref = (

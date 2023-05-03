@@ -14,7 +14,7 @@ import { FetchRecord } from "@/types/FetchRecord";
 type Props = {
   data: FetchRecord;
 };
-export const Result = ({ data }: Props) => {
+export const RecordBoard = ({ data }: Props) => {
   const router = useRouter();
   const { logout } = useAuth();
 

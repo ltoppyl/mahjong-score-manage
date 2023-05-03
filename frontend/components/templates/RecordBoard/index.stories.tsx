@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Result } from "./index";
+import { RecordBoard } from "./index";
 
-const meta: Meta<typeof Result> = {
-  title: "templates/Result",
-  component: Result,
+const meta: Meta<typeof RecordBoard> = {
+  title: "templates/RecordBoard",
+  component: RecordBoard,
 };
 
 export default meta;
-type Story = StoryObj<typeof Result>;
+type Story = StoryObj<typeof RecordBoard>;
 
 export const Default: Story = {
   args: {

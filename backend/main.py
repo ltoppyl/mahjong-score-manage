@@ -49,6 +49,8 @@ def root():
 @app.get("/api/v1/get-records")
 def get_record(userId: str):
     record_list = []
+
+    # TODO: 3麻のデータ取得に対応する際には、gameTypeを引数に追加する
     docs = db.collection("user").document(userId).collection("result").stream()
     for doc in docs:
         record_dic = doc.to_dict()

@@ -5,7 +5,7 @@ import { Center, HStack, Text, VStack } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { DonutChart } from "@/components/atoms/PieChart";
-import { ResultCard } from "@/components/atoms/ResultCard";
+import { RecordCard } from "@/components/atoms/RecordCard";
 import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
 import { Footer } from "@/components/organisms/Footer";
 import { useAuth } from "@/hooks/useAuth";
@@ -44,7 +44,7 @@ export const RecordBoard = ({ data }: Props) => {
           ) : (
             data.recordList.map((record) => (
               <>
-                <ResultCard data={record} />
+                <RecordCard data={record} />
                 <VSpacer size={1} />
               </>
             ))

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
-import { ResultInput } from "./index";
+import { RecordInput } from "./index";
 
-const meta: Meta<typeof ResultInput> = {
-  title: "templates/ResultInput",
-  component: ResultInput,
+const meta: Meta<typeof RecordInput> = {
+  title: "templates/RecordInput",
+  component: RecordInput,
 };
 
 export default meta;
@@ -16,7 +16,7 @@ export const Default: StoryObj = (args: any) => {
   const [flag, setFlag] = useState<boolean>(false);
   return (
     <>
-      <ResultInput {...args} flag={flag} setState={setFlag} />
+      <RecordInput {...args} flag={flag} setState={setFlag} />
     </>
   );
 };

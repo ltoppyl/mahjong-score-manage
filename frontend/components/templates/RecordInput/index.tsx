@@ -14,7 +14,7 @@ type Props = {
   flag: boolean;
   setState: Dispatch<SetStateAction<boolean>>;
 };
-export const ResultInput = ({ userInfo, flag, setState }: Props) => {
+export const RecordInput = ({ userInfo, flag, setState }: Props) => {
   const { logout } = useAuth();
 
   const handleLogout = async () => {

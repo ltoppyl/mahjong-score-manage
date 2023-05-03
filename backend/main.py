@@ -82,7 +82,7 @@ async def add_record(record: Record):
         doc_ref.set(record_dict)
         doc_id = doc_ref.id
 
-    return "success"
+    return doc_id
 
 
 @app.post("/api/v1/add-user")

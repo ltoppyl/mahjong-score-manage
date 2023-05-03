@@ -65,9 +65,18 @@ async def add_record(record: Record):
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
 
-    db.collection("user").document(userId).collection("result").document().set(
-        record_dict
-    )
+    if record_dict["gameType"] == 4:
+        doc_ref = (
+            db.collection("user").document(userId).collection("four-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
+    elif record_dict["gameType"] == 3:
+        doc_ref = (
+            db.collection("user").document(userId).collection("three-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
 
     return "success"
 

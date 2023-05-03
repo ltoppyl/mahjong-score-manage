@@ -52,7 +52,7 @@ export const RecordBoard = ({ data }: Props) => {
           <VSpacer size={24} />
         </VStack>
         <div style={{ position: "fixed", bottom: 0 }}>
-          <Footer type="result" />
+          <Footer type="RECORD" />
         </div>
       </Center>
     </div>

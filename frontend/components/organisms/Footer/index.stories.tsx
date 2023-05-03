@@ -12,6 +12,6 @@ type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = {
   args: {
-    type: "home",
+    type: "INPUT",
   },
 };

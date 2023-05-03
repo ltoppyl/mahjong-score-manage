@@ -43,7 +43,7 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
       </Center>
       <Center>
         <div style={{ position: "fixed", bottom: 0 }}>
-          <Footer type="home" />
+          <Footer type="INPUT" />
         </div>
       </Center>
     </div>

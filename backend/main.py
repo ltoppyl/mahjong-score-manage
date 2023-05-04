@@ -51,7 +51,7 @@ def get_record(userId: str):
     record_list = []
 
     # TODO: 3麻のデータ取得に対応する際には、gameTypeを引数に追加する
-    docs = db.collection("user").document(userId).collection("result").stream()
+    docs = db.collection("user").document(userId).collection("four-player").stream()
     for doc in docs:
         record_dic = doc.to_dict()
         record_dic["id"] = doc.id

@@ -14,7 +14,7 @@ type Props = {
   flag: boolean;
   setState: Dispatch<SetStateAction<boolean>>;
 };
-export const ResultInput = ({ userInfo, flag, setState }: Props) => {
+export const RecordInput = ({ userInfo, flag, setState }: Props) => {
   const { logout } = useAuth();
 
   const handleLogout = async () => {
@@ -43,7 +43,7 @@ export const ResultInput = ({ userInfo, flag, setState }: Props) => {
       </Center>
       <Center>
         <div style={{ position: "fixed", bottom: 0 }}>
-          <Footer type="home" />
+          <Footer type="INPUT" />
         </div>
       </Center>
     </div>

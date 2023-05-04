@@ -5,7 +5,7 @@ import { Box, Button, Center } from "@chakra-ui/react";
 
 import { HSpacer } from "@/components/atoms/Spacer";
 type Props = {
-  type: "home" | "result";
+  type: "INPUT" | "RECORD";
 };
 
 export const Footer = ({ type }: Props) => {
@@ -18,11 +18,11 @@ export const Footer = ({ type }: Props) => {
         <Button
           bgColor="white"
           borderColor="black"
-          color={type === "home" ? "#4A6F48" : "black"}
+          color={type === "INPUT" ? "#4A6F48" : "black"}
           variant="outline"
-          isDisabled={type === "home"}
+          isDisabled={type === "INPUT"}
           onClick={() => {
-            if (type !== "home") {
+            if (type !== "INPUT") {
               router.push("/");
             }
           }}
@@ -33,12 +33,12 @@ export const Footer = ({ type }: Props) => {
         <Button
           bgColor="white"
           borderColor="black"
-          color={type === "result" ? "#4A6F48" : "black"}
+          color={type === "RECORD" ? "#4A6F48" : "black"}
           variant="outline"
-          isDisabled={type === "result"}
+          isDisabled={type === "RECORD"}
           onClick={() => {
-            if (type !== "result") {
-              router.push("/result");
+            if (type !== "RECORD") {
+              router.push("/RECORD");
             }
           }}
         >

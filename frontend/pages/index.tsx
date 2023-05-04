@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 import { NotLogin } from "@/components/templates/NotLogin";
-import { ResultInput } from "@/components/templates/ResultInput";
+import { RecordInput } from "@/components/templates/RecordInput";
 import { UserInfo } from "@/types/UserInfo";
 import { IsLoggedIn } from "@/utils/isLoggedIn";
 
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   return (
     <>
       {loginInfo ? (
-        <ResultInput
+        <RecordInput
           flag={loginFlag}
           setState={setLoginFlag}
           userInfo={loginInfo}

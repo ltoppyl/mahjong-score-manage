@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { fetchRecordList } from "@/api/fetchRecordList";
-import { Result } from "@/components/templates/Result";
+import { RecordBoard } from "@/components/templates/RecordBoard";
 import { FetchRecord } from "@/types/FetchRecord";
 import { IsLoggedIn } from "@/utils/isLoggedIn";
 
-const ResultPage: NextPage = () => {
+const Record: NextPage = () => {
   const router = useRouter();
 
   const [data, setData] = useState<FetchRecord | undefined>(undefined);
@@ -23,7 +23,7 @@ const ResultPage: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <>{data && <Result data={data} />}</>;
+  return <>{data && <RecordBoard data={data} />}</>;
 };
 
-export default ResultPage;
+export default Record;

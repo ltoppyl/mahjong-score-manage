@@ -38,7 +38,7 @@ export const Footer = ({ type }: Props) => {
           isDisabled={type === "RECORD"}
           onClick={() => {
             if (type !== "RECORD") {
-              router.push("/RECORD");
+              router.push("/records");
             }
           }}
         >

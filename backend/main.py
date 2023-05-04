@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
@@ -48,6 +49,8 @@ def root():
 @app.get("/api/v1/get-records")
 def get_record(userId: str):
     record_list = []
+
+    # TODO: 3麻のデータ取得に対応する際には、gameTypeを引数に追加する
     docs = db.collection("user").document(userId).collection("result").stream()
     for doc in docs:
         record_dic = doc.to_dict()
@@ -65,11 +68,23 @@ async def add_record(record: Record):
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
 
-    db.collection("user").document(userId).collection("result").document().set(
-        record_dict
-    )
+    if record_dict["gameType"] != 4 and record_dict["gameType"] != 3:
+        return JSONResponse(status_code=422, content={"message": "Invalid gameType"})
 
-    return "success"
+    if record_dict["gameType"] == 4:
+        doc_ref = (
+            db.collection("user").document(userId).collection("four-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
+    elif record_dict["gameType"] == 3:
+        doc_ref = (
+            db.collection("user").document(userId).collection("three-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
+
+    return doc_id
 
 
 @app.post("/api/v1/add-user")

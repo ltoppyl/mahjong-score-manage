@@ -93,3 +93,15 @@ async def add_user(userId: str):
         user_ref.set({})
 
     return "success"
+
+@app.put("/api/v1/update-record")
+def update_record(record: Record, id: str):
+    record_dict = record.dict()
+    userId = record_dict.pop("userId")
+    record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
+    record_id = id
+
+    db.collection("user").document(userId).collection("result").document(record_id).set(data)
+
+    return"success"
+

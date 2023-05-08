@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Box, HStack } from "@chakra-ui/react";
 
 import { HSpacer } from "./index";

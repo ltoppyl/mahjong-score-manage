@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Box, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "./index";

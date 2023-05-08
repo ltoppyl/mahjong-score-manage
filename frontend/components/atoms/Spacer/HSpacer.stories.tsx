@@ -12,6 +12,8 @@ const meta: Meta<typeof HSpacer> = {
 export default meta;
 type Story = StoryObj<typeof HSpacer>;
 
+// FIXME: any 型の回避
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: Story = (args: any) => {
   return (
     <>

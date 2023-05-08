@@ -12,7 +12,7 @@ const meta: Meta<typeof VSpacer> = {
 export default meta;
 type Story = StoryObj<typeof VSpacer>;
 
-export const Default: Story = (args) => {
+export const Default: Story = (args: any) => {
   return (
     <>
       <VStack>

@@ -12,7 +12,7 @@ const meta: Meta<typeof HSpacer> = {
 export default meta;
 type Story = StoryObj<typeof HSpacer>;
 
-export const Default: Story = (args) => {
+export const Default: Story = (args: any) => {
   return (
     <>
       <HStack>

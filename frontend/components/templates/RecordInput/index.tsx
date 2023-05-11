@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
-import { Center, HStack, Text } from "@chakra-ui/react";
+import { Button, Center, HStack, Text } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { VSpacer } from "@/components/atoms/Spacer";
@@ -26,6 +26,8 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
     }
   };
 
+  const [isFourMahjong, setFourMahjong] = useState(true);
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <VSpacer size={8} />
@@ -33,10 +35,27 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
         <Text as="b">{userInfo.name}さんこんにちは</Text>
         <LogoutButton clickFn={handleLogout} />
       </HStack>
-      <VSpacer size={8} />
+      <VSpacer size={12} />
+      <HStack spacing={5} justify="center">
+        <Button
+          colorScheme={isFourMahjong ? "Black" : "blackAlpha"}
+          variant="link"
+          onClick={() => setFourMahjong(true)}
+        >
+          4麻
+        </Button>
+        <Button
+          colorScheme={isFourMahjong ? "blackAlpha" : "Black"}
+          variant="link"
+          onClick={() => setFourMahjong(false)}
+        >
+          3麻
+        </Button>
+      </HStack>
+      <VSpacer size={12} />
       <Center>
         <ScoreInputField
-          isFourMahjong={true}
+          isFourMahjong={isFourMahjong}
           ruleOptionList={["Mリーグルール"]}
           userId={userInfo.uid}
         />

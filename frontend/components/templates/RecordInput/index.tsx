@@ -26,7 +26,20 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
     }
   };
 
-  const [isFourMahjong, setFourMahjong] = useState(true);
+  const [isFourMahjong, setIsFourMahjong] = useState(true);
+  const GameTypeToggle = ({ gameType }: { gameType: 3 | 4 }) => {
+    return (
+      <Button
+        colorScheme={
+          (gameType === 4) === isFourMahjong ? "black" : "blackAlpha"
+        }
+        variant="link"
+        onClick={() => setIsFourMahjong(gameType === 4 ? true : false)}
+      >
+        {gameType === 4 ? "4麻" : "3麻"}
+      </Button>
+    );
+  };
 
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
@@ -35,24 +48,12 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
         <Text as="b">{userInfo.name}さんこんにちは</Text>
         <LogoutButton clickFn={handleLogout} />
       </HStack>
-      <VSpacer size={12} />
+      <VSpacer size={6} />
       <HStack spacing={5} justify="center">
-        <Button
-          colorScheme={isFourMahjong ? "Black" : "blackAlpha"}
-          variant="link"
-          onClick={() => setFourMahjong(true)}
-        >
-          4麻
-        </Button>
-        <Button
-          colorScheme={isFourMahjong ? "blackAlpha" : "Black"}
-          variant="link"
-          onClick={() => setFourMahjong(false)}
-        >
-          3麻
-        </Button>
+        <GameTypeToggle gameType={4} />
+        <GameTypeToggle gameType={3} />
       </HStack>
-      <VSpacer size={12} />
+      <VSpacer size={6} />
       <Center>
         <ScoreInputField
           isFourMahjong={isFourMahjong}

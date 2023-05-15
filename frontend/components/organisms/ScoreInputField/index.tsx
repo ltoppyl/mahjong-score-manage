@@ -63,6 +63,17 @@ export const ScoreInputField = ({
     });
   }, [input]);
 
+  useEffect(() => {
+    setIsLoading(false);
+    setIsValidate(false);
+    setInputScore(undefined);
+    setInput({
+      rule: undefined,
+      rank: undefined,
+      score: undefined,
+    });
+  }, [isFourMahjong]);
+
   const handleRuleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setInput((prevInput) => {

@@ -67,11 +67,8 @@ export const ScoreInputField = ({
     setIsLoading(false);
     setIsValidate(false);
     setInputScore(undefined);
-    setInput({
-      rule: undefined,
-      rank: undefined,
-      score: undefined,
-    });
+    setInput(initialInput);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFourMahjong]);
 
   const handleRuleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {

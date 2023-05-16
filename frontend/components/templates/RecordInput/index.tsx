@@ -28,15 +28,14 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
 
   const [isFourMahjong, setIsFourMahjong] = useState(true);
   const GameTypeToggle = ({ gameType }: { gameType: 3 | 4 }) => {
+    const isFourGameType = gameType === 4 ? true : false;
     return (
       <Button
-        colorScheme={
-          (gameType === 4) === isFourMahjong ? "black" : "blackAlpha"
-        }
+        colorScheme={isFourGameType === isFourMahjong ? "" : "blackAlpha"}
         variant="link"
         onClick={() => setIsFourMahjong(gameType === 4 ? true : false)}
       >
-        {gameType === 4 ? "4麻" : "3麻"}
+        {isFourGameType ? "4麻" : "3麻"}
       </Button>
     );
   };

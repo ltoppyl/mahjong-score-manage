@@ -33,7 +33,7 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
       <Button
         colorScheme={isFourGameType === isFourMahjong ? "" : "blackAlpha"}
         variant="link"
-        onClick={() => setIsFourMahjong(gameType === 4 ? true : false)}
+        onClick={() => setIsFourMahjong(isFourGameType ? true : false)}
       >
         {isFourGameType ? "4麻" : "3麻"}
       </Button>

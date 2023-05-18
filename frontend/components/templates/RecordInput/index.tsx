@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
-import { Center, HStack, Text } from "@chakra-ui/react";
+import { Button, Center, HStack, Text } from "@chakra-ui/react";
 
 import { LogoutButton } from "@/components/atoms/LogoutButton";
 import { VSpacer } from "@/components/atoms/Spacer";
@@ -26,6 +26,20 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
     }
   };
 
+  const [isFourMahjong, setIsFourMahjong] = useState(true);
+  const GameTypeToggle = ({ gameType }: { gameType: 3 | 4 }) => {
+    const isFourGameType = gameType === 4 ? true : false;
+    return (
+      <Button
+        colorScheme={isFourGameType === isFourMahjong ? "" : "blackAlpha"}
+        variant="link"
+        onClick={() => setIsFourMahjong(isFourGameType ? true : false)}
+      >
+        {isFourGameType ? "4麻" : "3麻"}
+      </Button>
+    );
+  };
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <VSpacer size={8} />
@@ -33,10 +47,15 @@ export const RecordInput = ({ userInfo, flag, setState }: Props) => {
         <Text as="b">{userInfo.name}さんこんにちは</Text>
         <LogoutButton clickFn={handleLogout} />
       </HStack>
-      <VSpacer size={8} />
+      <VSpacer size={6} />
+      <HStack spacing={5} justify="center">
+        <GameTypeToggle gameType={4} />
+        <GameTypeToggle gameType={3} />
+      </HStack>
+      <VSpacer size={6} />
       <Center>
         <ScoreInputField
-          isFourMahjong={true}
+          isFourMahjong={isFourMahjong}
           ruleOptionList={["Mリーグルール"]}
           userId={userInfo.uid}
         />

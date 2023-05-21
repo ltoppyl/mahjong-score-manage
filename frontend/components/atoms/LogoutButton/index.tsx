@@ -4,17 +4,13 @@ import { FiLogOut } from "react-icons/fi";
 import { Icon, useDisclosure } from "@chakra-ui/react";
 
 import { CustomModal } from "@/components/atoms/CustomModal";
-import { useAuth } from "@/hooks/useAuth";
 
-export const LogoutButton = () => {
+type Props = {
+  clickFn?: () => Promise<void>;
+};
+export const LogoutButton = ({ clickFn }: Props) => {
   const [isHover, setIsHover] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { logout } = useAuth();
-
-  const handleLogout = () => {
-    logout();
-    onClose();
-  };
 
   return (
     <>
@@ -29,7 +25,7 @@ export const LogoutButton = () => {
       <CustomModal
         isOpen={isOpen}
         onClose={onClose}
-        clickFn={handleLogout}
+        clickFn={clickFn}
         title="ログアウトしますか？"
         body="お待ちしています！"
         buttonText="ログアウト"

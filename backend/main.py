@@ -1,6 +1,5 @@
-import os
-from dotenv import load_dotenv
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
@@ -9,8 +8,6 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 from utils.cal_point import cal_point
-from utils.create_random_id import create_random_id
-from utils.dict_to_array import dict_to_array
 from utils.aggregate_rank import aggregate_rank
 
 
@@ -38,11 +35,7 @@ app.add_middleware(
 # Firebase の認証
 
 # --------------------
-load_dotenv()
-if os.getenv("APP_ENV") == "dev":
-    path = "path/to/dev.json"
-else:
-    path = "path/to/production.json"
+path = "path/to/dev.json"
 cred = credentials.Certificate(path)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -55,9 +48,15 @@ def root():
 
 @app.get("/api/v1/get-records")
 def get_record(userId: str):
-    db_dic = db.collection("user").document(userId).get()
-    db_dic = db_dic.to_dict()
-    record_list = dict_to_array(db_dic)
+    record_list = []
+
+    # TODO: 3麻のデータ取得に対応する際には、gameTypeを引数に追加する
+    docs = db.collection("user").document(userId).collection("four-player").stream()
+    for doc in docs:
+        record_dic = doc.to_dict()
+        record_dic["id"] = doc.id
+        record_list.append(record_dic)
+
     rank_data = aggregate_rank(record_list)
     output = {"recordList": record_list, "rankData": rank_data}
     return output
@@ -69,19 +68,23 @@ async def add_record(record: Record):
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
 
-    db_dic = db.collection("user").document(userId).get()
-    db_dic = db_dic.to_dict()
+    if record_dict["gameType"] != 4 and record_dict["gameType"] != 3:
+        return JSONResponse(status_code=422, content={"message": "Invalid gameType"})
 
-    isIdExist = True
-    while isIdExist:
-        random_id = create_random_id()
-        if random_id not in db_dic:
-            isIdExist = False
+    if record_dict["gameType"] == 4:
+        doc_ref = (
+            db.collection("user").document(userId).collection("four-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
+    elif record_dict["gameType"] == 3:
+        doc_ref = (
+            db.collection("user").document(userId).collection("three-player").document()
+        )
+        doc_ref.set(record_dict)
+        doc_id = doc_ref.id
 
-    db_dic[random_id] = record_dict
-    db.collection("user").document(userId).set(db_dic)
-
-    return "success"
+    return doc_id
 
 
 @app.post("/api/v1/add-user")

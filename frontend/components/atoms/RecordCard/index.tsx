@@ -9,7 +9,7 @@ import { Record } from "@/types/Record";
 type Props = {
   data: Record;
 };
-export const ResultCard = ({ data }: Props) => {
+export const RecordCard = ({ data }: Props) => {
   const pointText = 0 < data.point ? `+${data.point}` : `${data.point}`;
 
   return (

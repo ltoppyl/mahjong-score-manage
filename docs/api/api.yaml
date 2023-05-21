@@ -26,7 +26,7 @@ paths:
           description: ユーザーID
           schema:
             type: string
-          example: "PENgoeRqqWahTPhU3Y74"
+          example: "t83ktvlzQVh2zEuXHZR9OrU2Mhv1"
       responses:
         "200":
           description: Successful Response
@@ -119,7 +119,7 @@ paths:
       parameters:
         - in: query
           name: recordId
-          description: 編集したい成績 id 
+          description: 編集したい成績 id
           schema:
             type: string
           example: "O6iIiOtnBPlzs5ANqxwq"

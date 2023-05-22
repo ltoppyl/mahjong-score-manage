@@ -96,3 +96,34 @@ async def add_user(userId: str):
         user_ref.set({})
 
     return "success"
+
+
+@app.put("/api/v1/update-record")
+def update_record(record: Record, recordId: str):
+    record_dict = record.dict()
+    userId = record_dict.pop("userId")
+    record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
+
+    if record_dict["gameType"] != 4 and record_dict["gameType"] != 3:
+        return JSONResponse(status_code=422, content={"message": "Invalid gameType"})
+    elif record_dict["gameType"] == 4:
+        doc_ref = (
+            db.collection("user")
+            .document(userId)
+            .collection("four-player")
+            .document(recordId)
+            .set(record_dict)
+        )
+        doc_id = doc_ref.id
+
+    elif record_dict["gameType"] == 3:
+        doc_ref = (
+            db.collection("user")
+            .document(userId)
+            .collection("three-player")
+            .document(recordId)
+            .set(record_dict)
+        )
+        doc_id = doc_ref.id
+
+    return doc_id

@@ -8,7 +8,7 @@ servers:
 paths:
   /:
     get:
-      summary: BE 起動確認用のエンドポイント
+      summary: BE 起動確認用のエンドポイント (実装済み)
       responses:
         '200':
           description: BE 起動確認用のエンドポイント
@@ -19,14 +19,14 @@ paths:
 
   /api/v1/get-records:
     get:
-      summary: 成績データの取得
+      summary: 成績データの取得 (実装済み)
       parameters:
         - in: query
           name: userId
           description: ユーザーID
           schema:
             type: string
-          example: "PENgoeRqqWahTPhU3Y74"
+          example: "t83ktvlzQVh2zEuXHZR9OrU2Mhv1"
       responses:
         "200":
           description: Successful Response
@@ -80,7 +80,7 @@ paths:
 
   /api/v1/add-record:
     post:
-      summary: データの追加
+      summary: データの追加 (実装済み)
       requestBody:
         required: true
         content:
@@ -97,7 +97,7 @@ paths:
 
   /api/v1/add-user:
     post:
-      summary: ユーザーの追加
+      summary: ユーザーの追加 (実装済み)
       parameters:
         - in: query
           name: userId
@@ -112,6 +112,31 @@ paths:
             application/json:
               schema:
                 type: string
+
+  /api/v1/update-record:
+    put:
+      summary: データの更新 (実装済み)
+      parameters:
+        - in: query
+          name: recordId
+          description: 編集したい成績 id
+          schema:
+            type: string
+          example: "O6iIiOtnBPlzs5ANqxwq"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Record'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+
 components:
   schemas:
     Record:
@@ -119,7 +144,7 @@ components:
       properties:
         userId:
           type: string
-          example: "PENgoeRqqWahTPhU3Y74"
+          example: "t83ktvlzQVh2zEuXHZR9OrU2Mhv1"
         date:
           type: string
           format: date-time

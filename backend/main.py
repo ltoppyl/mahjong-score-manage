@@ -67,6 +67,7 @@ async def add_record(record: Record):
     record_dict = record.dict()
     userId = record_dict.pop("userId")
     record_dict["point"] = cal_point(record_dict["score"], record_dict["rank"])
+    record_dict["date"] = convert_to_timestamp(record_dict["date"])
 
     if record_dict["gameType"] != 4 and record_dict["gameType"] != 3:
         return JSONResponse(status_code=422, content={"message": "Invalid gameType"})

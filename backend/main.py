@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
+from typing import Optional
 
 import firebase_admin
 from firebase_admin import credentials
@@ -9,6 +10,12 @@ from firebase_admin import firestore
 
 from utils.cal_point import cal_point
 from utils.aggregate_rank import aggregate_rank
+from utils.timestamp import (
+    convert_to_timestamp,
+    convert_to_timestamp_start_day,
+    convert_to_timestamp_end_day,
+    convert_to_string,
+)
 
 
 class Record(BaseModel):
@@ -47,14 +54,41 @@ def root():
 
 
 @app.get("/api/v1/get-records")
-def get_record(userId: str):
+def get_record(
+    userId: str,
+    gameType: Optional[int] = 4,
+    startDate: Optional[str] = None,
+    endDate: Optional[str] = None,
+):
     record_list = []
 
-    # TODO: 3麻のデータ取得に対応する際には、gameTypeを引数に追加する
-    docs = db.collection("user").document(userId).collection("four-player").stream()
+    if gameType == 4:
+        collection_ref = (
+            db.collection("user").document(userId).collection("four-player")
+        )
+    elif gameType == 3:
+        collection_ref = (
+            db.collection("user").document(userId).collection("three-player")
+        )
+    else:
+        return JSONResponse(status_code=422, content={"message": "Invalid gameType"})
+
+    # startDateとendDateが両方指定されている場合のみ日付フィルタリングを行う
+    if startDate is not None and endDate is not None:
+        start_datetime = convert_to_timestamp_start_day(startDate)
+        end_datetime = convert_to_timestamp_end_day(endDate)
+        docs = (
+            collection_ref.where("date", ">=", start_datetime)
+            .where("date", "<=", end_datetime)
+            .stream()
+        )
+    else:
+        docs = collection_ref.stream()
+
     for doc in docs:
         record_dic = doc.to_dict()
         record_dic["id"] = doc.id
+        record_dic["date"] = convert_to_string(record_dic["date"])
         record_list.append(record_dic)
 
     rank_data = aggregate_rank(record_list)

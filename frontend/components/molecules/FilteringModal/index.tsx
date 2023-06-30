@@ -1,6 +1,7 @@
 import ja from "date-fns/locale/ja";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 import {
@@ -19,11 +20,7 @@ import {
 } from "@chakra-ui/react";
 
 import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
-
-type DateRange = {
-  start: Date | null;
-  end: Date | null;
-};
+import { DateRange } from "@/types/DataRange";
 
 type Props = {
   isOpen: boolean;

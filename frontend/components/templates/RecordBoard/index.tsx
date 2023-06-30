@@ -20,13 +20,8 @@ import { HSpacer, VSpacer } from "@/components/atoms/Spacer";
 import { FilteringModal } from "@/components/molecules/FilteringModal";
 import { Footer } from "@/components/organisms/Footer";
 import { useAuth } from "@/hooks/useAuth";
+import { DateRange } from "@/types/DataRange";
 import { FetchRecord } from "@/types/FetchRecord";
-
-// TODO: 型の共通化
-type DateRange = {
-  start: Date | null;
-  end: Date | null;
-};
 
 type Props = {
   data: FetchRecord;

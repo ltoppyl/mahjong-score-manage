@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import { Button, Text, useDisclosure } from "@chakra-ui/react";
 
+import { DateRange } from "@/types/DataRange";
+
 import { FilteringModal } from "./index";
 
 const meta: Meta = {
@@ -12,10 +14,6 @@ const meta: Meta = {
 
 export default meta;
 
-type DateRange = {
-  start: Date | null;
-  end: Date | null;
-};
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Default: StoryObj = (args: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

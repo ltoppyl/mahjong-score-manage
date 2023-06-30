@@ -101,7 +101,7 @@ export const ScoreInputField = ({
     const data: PostRecord = {
       userId: userId,
       date: fetchTime(),
-      gameType: 4, // TODO: 後に3麻も増えた場合それに対応する必要がある
+      gameType: isFourMahjong ? 4 : 3,
       rank: input.rank,
       rule: input.rule,
       score: input.score * (isScoreMinus ? -1 : 1),

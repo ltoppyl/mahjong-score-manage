@@ -5,6 +5,7 @@ export const fetchTime = () => {
   const day = ("0" + now.getDate()).slice(-2);
   const hour = ("0" + now.getHours()).slice(-2);
   const minute = ("0" + now.getMinutes()).slice(-2);
+  const seconds = ("0" + now.getSeconds()).slice(-2);
 
-  return `${year}/${month}/${day} ${hour}:${minute}`;
+  return `${year}/${month}/${day} ${hour}:${minute}:${seconds}`;
 };

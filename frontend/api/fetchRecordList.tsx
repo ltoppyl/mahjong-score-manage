@@ -6,10 +6,18 @@ import { FetchRecord } from "@/types/FetchRecord";
 
 export const fetchRecordList = (
   uid: string,
+  gameType: 3 | 4,
+  startDate: Date | null,
+  endDate: Date | null,
   setState: Dispatch<SetStateAction<FetchRecord | undefined>>
 ) => {
+  const url =
+    startDate !== null && endDate !== null
+      ? `${baseURL}/api/v1/get-records?userId=${uid}&gameType=${gameType}&startDate=${startDate.toLocaleDateString()}&endDate=${endDate.toLocaleDateString()}`
+      : `${baseURL}/api/v1/get-records?userId=${uid}&gameType=${gameType}`;
+
   axios
-    .get(baseURL + "/api/v1/get-records?userId=" + uid)
+    .get(url)
     .then((res) => {
       setState(res.data);
     })

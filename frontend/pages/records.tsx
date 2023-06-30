@@ -19,11 +19,27 @@ const Record: NextPage = () => {
       return;
     }
 
-    fetchRecordList(data.uid, setData);
+    fetchRecordList(data.uid, 4, null, null, setData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <>{data && <RecordBoard data={data} />}</>;
+  const handlePostFiltering = (
+    gameType: 3 | 4,
+    startDate: Date | null,
+    endDate: Date | null
+  ) => {
+    const data = IsLoggedIn();
+    if (!data) {
+      router.push("/");
+      return;
+    }
+
+    fetchRecordList(data.uid, gameType, startDate, endDate, setData);
+  };
+
+  return (
+    <>{data && <RecordBoard data={data} filteringFn={handlePostFiltering} />}</>
+  );
 };
 
 export default Record;

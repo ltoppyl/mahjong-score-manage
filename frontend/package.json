@@ -22,7 +22,7 @@
     "react-datepicker": "^4.14.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-    "recharts": "^2.5.0"
+    "recharts": "^2.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

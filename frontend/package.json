@@ -34,7 +34,7 @@
     "@storybook/addon-mdx-gfm": "7.0.0-rc.8",
     "@storybook/nextjs": "7.0.0-rc.8",
     "@storybook/react": "^7.0.0-rc.8",
-    "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/testing-library": "^0.2.0",
     "@types/node": "18.16.3",
     "@types/react": "18.0.29",
     "@types/react-datepicker": "^4.11.2",
